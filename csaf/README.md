@@ -1,0 +1,5 @@
+# NI CSAF Repository
+The purpose of this repository is to provide machine-readable security advisories and VEX statements for NI products using the [OASIS Common Security Advisory Framework (CSAF) Version 2.0 standard](https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html). Providing machine-readable advisories using CSAF v2.0 enables automation and should help users to understand and assess the likelihood and impact of vulnerabilities disclosed in NI products.
+
+## OASIS CSAF 2.0 Standard
+CSAF is a standard for machine-readable security advisories developed by the [OASIS CSAF Technical Committee](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=csaf). CSAF enables individuals and organizations to successfully disclose and consume security advisories in machine-readable format. The standard also specifies the distribution and discovery of CSAF documents. The CSAF files found in this repository were designed following the CSAF v2.0 standard published by [OASIS Open](https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html).
