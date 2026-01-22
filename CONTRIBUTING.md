@@ -4,8 +4,8 @@ Contributions to **product-security-center** are welcome!  However, to ensure th
 
 If you find incorrect or missing information, consider opening an issue or sending your feedback directly to [security@ni.com](mailto:security@ni.com).  
 
-[!CAUTION]
-**Do not report vulnerabilities thru contributions or issues** See [SECURITY](https://github.com/ni/product-security-center/blob/main/SECURITY.md) for details on how to report. 
+> [!CAUTION]
+> **Do not report vulnerabilities thru contributions or issues!** See [SECURITY](https://github.com/ni/product-security-center/blob/main/SECURITY.md) for details on how to report. 
 
 **product-security-center** is managed via [git](https://git-scm.com), with the canonical upstream repository hosted on [GitHub](https://github.com/ni/product-security-center/).
 
