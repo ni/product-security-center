@@ -1,0 +1,24 @@
+{
+  "canonical_url": "https://github.com/ni/product-security-center/csaf/provider-metadata.json",
+  "distributions": [
+    {
+      "directory_url": "https://github.com/ni/product-security-center/tree/main/csaf/advisories"
+    },
+    {
+      "directory_url": "https://github.com/ni/product-security-center/tree/main/csaf/vex"
+    }
+  ],
+  "last_updated": "2026-01-23T00:00:00.000Z",
+  "list_on_CSAF_aggregators": true,
+  "metadata_version": "2.0",
+  "mirror_on_CSAF_aggregators": false,
+  "public_openpgp_keys": [],
+  "publisher": {
+    "category": "vendor",
+    "contact_details": "security@ni.com",
+    "issuing_authority": "NI PSIRT is responsible for all vulnerabilities related to NI products.",
+    "name": "NI PSIRT",
+    "namespace": "https://ni.com"
+  },
+  "role": "csaf_publisher"
+}
