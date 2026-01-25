@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.head_ref || github.ref }}
       
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -41,7 +42,8 @@ jobs:
             This PR updates:
             - `csaf/advisories/index.txt`
             - `csaf/advisories/changes.csv`
-          branch: csaf-updates
+          branch: chore/csaf-updates
+          base: ${{ github.head_ref || github.ref_name }}
           delete-branch: true
           add-paths: |
             csaf/advisories/index.txt
