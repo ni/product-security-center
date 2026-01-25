@@ -3,6 +3,7 @@
 2024/ni_cve-2024-4081.json
 2024/ni_cve-2024-6675.json
 2025/ni-cve-2025-64469.json
+2025/ni_cve-2025-12097.json
 2025/ni_cve-2025-64461.json
 2025/ni_cve-2025-64462.json
 2025/ni_cve-2025-64463.json
