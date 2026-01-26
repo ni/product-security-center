@@ -1,0 +1,20 @@
+name: 'Generate CSAF Metadata'
+description: 'Generates CSAF metadata files (index.txt and changes.csv)'
+
+inputs:
+  directory:
+    description: 'Directory name (advisories or vex)'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+    
+    - name: Generate metadata files
+      shell: bash
+      run: |
+        python scripts/generate_csaf_metadata.py --directory ${{ inputs.directory }}

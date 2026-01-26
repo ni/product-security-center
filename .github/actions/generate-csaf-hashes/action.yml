@@ -1,0 +1,32 @@
+name: 'Generate CSAF Hashes'
+description: 'Generates SHA-512 hash files for CSAF documents'
+
+inputs:
+  changed-files:
+    description: 'Newline-separated list of changed CSAF JSON files'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Generate SHA-512 hash files
+      shell: bash
+      run: |
+        echo "${{ inputs.changed-files }}" | while IFS= read -r file; do
+          if [ -n "$file" ] && [ -f "$file" ]; then
+            echo "Generating SHA-512 hash for: $file"
+            
+            # Generate hash in the format: <hash>  <filename>
+            # Use sha512sum which outputs in the correct format
+            HASH_OUTPUT=$(sha512sum "$file")
+            
+            # Extract just the filename (not the full path) for the hash file content
+            FILENAME=$(basename "$file")
+            HASH_VALUE=$(echo "$HASH_OUTPUT" | awk '{print $1}')
+            
+            # Create hash file with format: <hash>  <filename>
+            echo "$HASH_VALUE  $FILENAME" > "${file}.sha512"
+            
+            echo "Created: ${file}.sha512"
+          fi
+        done
