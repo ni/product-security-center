@@ -10,9 +10,32 @@ and generates two metadata files:
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import List, Tuple
+
+
+def extract_cve_number(path: Path) -> Tuple[str, int]:
+    """
+    Extract year and CVE number from a CSAF file path for sorting.
+    
+    Files are named like: YYYY/ni_cve-YYYY-NNNNN.json
+    Returns a tuple of (year, cve_number) for sorting.
+    """
+    # Extract the year from the parent directory
+    year = path.parent.name
+    
+    # Extract the CVE number from the filename using regex
+    # Pattern matches: ni_cve-YYYY-NNNNN
+    match = re.search(r'ni_cve-\d{4}-(\d+)', path.name)
+    if match:
+        cve_number = int(match.group(1))
+    else:
+        # If pattern doesn't match, use 0 (shouldn't happen with valid files)
+        cve_number = 0
+    
+    return (year, cve_number)
 
 
 def find_csaf_documents(base_path: Path) -> List[Path]:
@@ -32,7 +55,8 @@ def find_csaf_documents(base_path: Path) -> List[Path]:
     if not json_files:
         print(f"Warning: No CSAF documents found in '{base_path}'", file=sys.stderr)
     
-    return sorted(json_files)
+    # Sort by year first, then by CVE number numerically
+    return sorted(json_files, key=extract_cve_number)
 
 
 def extract_release_date(json_file: Path) -> str:
