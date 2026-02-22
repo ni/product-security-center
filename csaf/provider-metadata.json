@@ -18,7 +18,7 @@
     "contact_details": "security@ni.com",
     "issuing_authority": "NI PSIRT is responsible for all vulnerabilities related to NI products.",
     "name": "NI PSIRT",
-    "namespace": "https://ni.com"
+    "namespace": "https://www.ni.com"
   },
   "role": "csaf_publisher"
 }
