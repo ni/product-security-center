@@ -1,2 +1,6 @@
 # Default code owner for product-security-center
 * @kyle-ni
+
+# The CODEOWNERS file should be protected by the primary maintainers directly.
+# Always keep this line at the bottom of the file, for rule parsing.
+/.github/CODEOWNERS @kyle-ni @evanc-ni
