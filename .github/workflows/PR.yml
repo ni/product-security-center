@@ -7,10 +7,6 @@ on:
     paths:
       - 'csaf/advisories/**/*.json'
       - 'csaf/vex/**/*.json'
-  pull_request:
-    paths:
-      - 'csaf/advisories/**/*.json'
-      - 'csaf/vex/**/*.json'
 
 permissions:
   contents: write
