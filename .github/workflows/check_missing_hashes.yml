@@ -1,0 +1,79 @@
+name: Check Missing CSAF Hashes
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: check-missing-csaf-hashes
+  cancel-in-progress: true
+
+jobs:
+  check-missing-hashes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Find missing SHA-512 hashes
+        id: find-missing-hashes
+        shell: bash
+        run: |
+          missing_files=""
+
+          while IFS= read -r -d '' json_file; do
+            if [ ! -f "${json_file}.sha512" ]; then
+              missing_files="${missing_files}${json_file}\n"
+            fi
+          done < <(find csaf/advisories csaf/vex -type f -name '*.json' -print0)
+
+          if [ -z "$missing_files" ]; then
+            echo "No missing SHA-512 hash files found"
+            echo "has_missing_hashes=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "Missing SHA-512 hash files for:"
+          printf '%s' "$missing_files"
+          echo "has_missing_hashes=true" >> "$GITHUB_OUTPUT"
+          {
+            echo 'missing_files<<EOF'
+            printf '%s' "$missing_files"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Generate missing SHA-512 hashes
+        if: steps.find-missing-hashes.outputs.has_missing_hashes == 'true'
+        uses: ./.github/actions/generate-csaf-hashes
+        with:
+          changed-files: ${{ steps.find-missing-hashes.outputs.missing_files }}
+
+      - name: Create Pull Request
+        if: steps.find-missing-hashes.outputs.has_missing_hashes == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          commit-message: "chore: add missing CSAF SHA-512 hashes"
+          branch: chore/missing-csaf-hashes
+          title: "Add missing CSAF SHA-512 hashes"
+          body: |
+            This PR adds missing SHA-512 hash files for CSAF documents.
+
+            **Files: **
+            ```
+            ${{ steps.find-missing-hashes.outputs.missing_files }}
+            ```
+          labels: automated, csaf
+          add-paths: |
+            csaf/advisories/**/*.sha512
+            csaf/vex/**/*.sha512
+          delete-branch: true

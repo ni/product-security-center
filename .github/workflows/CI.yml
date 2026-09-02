@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  workflow_call:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  check_workflows:
+    name: Check workflows
+    uses: ./.github/workflows/check_workflows.yml
+    permissions:
+      security-events: write
