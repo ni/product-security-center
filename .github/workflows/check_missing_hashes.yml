@@ -75,7 +75,5 @@ jobs:
             ${{ steps.find-missing-hashes.outputs.missing_files }}
             ```
           labels: automated, csaf
-          add-paths: |
-            csaf/advisories/**/*.sha512
-            csaf/vex/**/*.sha512
+          add-paths: csaf/**/*.sha512
           delete-branch: true
