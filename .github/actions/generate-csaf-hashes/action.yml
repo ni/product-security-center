@@ -11,8 +11,10 @@ runs:
   steps:
     - name: Generate SHA-512 hash files
       shell: bash
+      env:
+        CHANGED_FILES: ${{ inputs.changed-files }}
       run: |
-        echo "${{ inputs.changed-files }}" | while IFS= read -r file; do
+        echo "$CHANGED_FILES" | while IFS= read -r file; do
           if [ -n "$file" ] && [ -f "$file" ]; then
             echo "Generating SHA-512 hash for: $file"
             
