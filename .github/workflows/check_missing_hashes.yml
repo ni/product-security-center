@@ -32,7 +32,7 @@ jobs:
 
           while IFS= read -r -d '' json_file; do
             if [ ! -f "${json_file}.sha512" ]; then
-              missing_files="${missing_files}${json_file}\n"
+              missing_files="${missing_files}${json_file}"$'\n'
             fi
           done < <(find csaf/advisories csaf/vex -type f -name '*.json' -print0)
 
