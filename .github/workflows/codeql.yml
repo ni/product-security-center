@@ -22,16 +22,18 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      with:
+        persist-credentials: false
 
     # Initializes the CodeQL tools and sets it to Python source-only mode
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@c20e34f438d671fc35777cc9820dd7adf8252874 # v3
+      uses: github/codeql-action/init@b96794f277cc27b87dfbe150e7b8b409cdbcf6cd # v4.38.0
       with:
         languages: 'python'
         build-mode: 'none'
 
     # Performs the static analysis and uploads results to your GitHub Security tab
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@c20e34f438d671fc35777cc9820dd7adf8252874 # v3
+      uses: github/codeql-action/analyze@b96794f277cc27b87dfbe150e7b8b409cdbcf6cd # v4.38.0
       with:
         category: "/language:python"
