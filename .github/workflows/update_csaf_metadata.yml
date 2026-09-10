@@ -65,19 +65,19 @@ jobs:
       
       - name: Generate SHA-512 hashes
         if: steps.detect-changes.outputs.has_changes == 'true'
-        uses: ./.github/actions/generate-csaf-hashes
+        uses: $/.github/actions/generate-csaf-hashes
         with:
           changed-files: ${{ steps.detect-changes.outputs.changed_files }}
       
       - name: Generate advisories metadata
         if: steps.detect-changes.outputs.advisories_changed == 'true'
-        uses: ./.github/actions/generate-csaf-metadata
+        uses: $/.github/actions/generate-csaf-metadata
         with:
           directory: advisories
       
       - name: Generate VEX metadata
         if: steps.detect-changes.outputs.vex_changed == 'true'
-        uses: ./.github/actions/generate-csaf-metadata
+        uses: $/.github/actions/generate-csaf-metadata
         with:
           directory: vex
       

@@ -18,4 +18,4 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    uses: ./.github/workflows/update_csaf_metadata.yml
+    uses: $/.github/workflows/update_csaf_metadata.yml

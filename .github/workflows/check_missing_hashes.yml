@@ -53,7 +53,7 @@ jobs:
 
       - name: Generate missing SHA-512 hashes
         if: steps.find-missing-hashes.outputs.has_missing_hashes == 'true'
-        uses: ./.github/actions/generate-csaf-hashes
+        uses: $/.github/actions/generate-csaf-hashes
         with:
           changed-files: ${{ steps.find-missing-hashes.outputs.missing_files }}
 

@@ -12,6 +12,6 @@ permissions: {}
 jobs:
   check_workflows:
     name: Check workflows
-    uses: ./.github/workflows/check_workflows.yml
+    uses: $/.github/workflows/check_workflows.yml
     permissions:
       security-events: write
