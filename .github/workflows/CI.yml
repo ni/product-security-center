@@ -15,3 +15,9 @@ jobs:
     uses: $/.github/workflows/check_workflows.yml
     permissions:
       security-events: write
+
+  update-csaf-metadata:
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: $/.github/workflows/update_csaf_metadata.yml

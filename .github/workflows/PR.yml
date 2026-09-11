@@ -14,8 +14,9 @@ concurrency:
 permissions: {}
 
 jobs:
-  update-csaf-metadata:
+  check-csaf-schema:
+    if: github.event_name == 'pull_request'
     permissions:
-      contents: write
-      pull-requests: write
-    uses: $/.github/workflows/update_csaf_metadata.yml
+      contents: read
+    uses: $/.github/workflows/check_csaf_schema.yml
+
