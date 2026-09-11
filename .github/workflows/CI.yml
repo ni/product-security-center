@@ -17,6 +17,7 @@ jobs:
       security-events: write
 
   update-csaf-metadata:
+    name: Update CSAF Metadata
     permissions:
       contents: write
       pull-requests: write
