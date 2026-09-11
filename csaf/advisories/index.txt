@@ -72,6 +72,8 @@
 2026/ni_cve-2026-0955.json
 2026/ni_cve-2026-0956.json
 2026/ni_cve-2026-0957.json
+2026/ni_cve-2026-4129.json
+2026/ni_cve-2026-4130.json
 2026/ni_cve-2026-8035.json
 2026/ni_cve-2026-8036.json
 2026/ni_cve-2026-9051.json
