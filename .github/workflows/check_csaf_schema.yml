@@ -19,10 +19,12 @@ jobs:
       - name: Detect changed CSAF documents
         id: detect-changes
         shell: bash
+        env:
+          BASE_REF: ${{ github.base_ref }}
         run: |
-          git fetch --no-tags --prune --depth=1 origin "+refs/heads/${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}"
+          git fetch --no-tags --prune --depth=1 origin "+refs/heads/${BASE_REF}:refs/remotes/origin/${BASE_REF}"
 
-          changed_files=$(git diff --name-only --diff-filter=ACMR "origin/${{ github.base_ref }}" HEAD \
+          changed_files=$(git diff --name-only --diff-filter=ACMR "origin/${BASE_REF}" HEAD \
             | grep -E '^csaf/(advisories|vex)/.*\.json$' \
             | grep -v '\.sha512$' \
             || true)
