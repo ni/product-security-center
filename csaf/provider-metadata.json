@@ -1,14 +1,14 @@
 {
-  "canonical_url": "https://github.com/ni/product-security-center/csaf/provider-metadata.json",
+  "canonical_url": "https://raw.githubusercontent.com/ni/product-security-center/main/csaf/provider-metadata.json",
   "distributions": [
     {
-      "directory_url": "https://github.com/ni/product-security-center/tree/main/csaf/advisories"
+      "directory_url": "https://raw.githubusercontent.com/ni/product-security-center/main/csaf/advisories"
     },
     {
-      "directory_url": "https://github.com/ni/product-security-center/tree/main/csaf/vex"
+      "directory_url": "https://raw.githubusercontent.com/ni/product-security-center/main/csaf/vex"
     }
   ],
-  "last_updated": "2026-01-23T00:00:00.000Z",
+  "last_updated": "2026-10-08T00:00:00.000Z",
   "list_on_CSAF_aggregators": true,
   "metadata_version": "2.0",
   "mirror_on_CSAF_aggregators": false,
