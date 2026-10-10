@@ -1,0 +1,2 @@
+# The CSAF SHA-512 sidecars hash the committed bytes; never convert line endings on checkout.
+* -text
