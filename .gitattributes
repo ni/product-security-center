@@ -1,2 +1,7 @@
-# The CSAF SHA-512 sidecars hash the committed bytes; never convert line endings on checkout.
-* -text
+# Advisories, hash sidecars, and the CSAF directory metadata must check out
+# byte-for-byte as committed on every platform: the .sha512 sidecars hash the
+# committed LF bytes, and consumers mirror the csaf/ tree as published.
+* text=auto
+*.json text eol=lf
+*.sha* text eol=lf
+csaf/** text eol=lf
