@@ -12,7 +12,7 @@ permissions: {}
 jobs:
   check_workflows:
     name: Check workflows
-    uses: $/.github/workflows/check_workflows.yml
+    uses: ./.github/workflows/check_workflows.yml
     permissions:
       security-events: write
 
@@ -21,4 +21,4 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    uses: $/.github/workflows/update_csaf_metadata.yml
+    uses: ./.github/workflows/update_csaf_metadata.yml
